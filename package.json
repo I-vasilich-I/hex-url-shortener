@@ -5,6 +5,7 @@
   "author": "Oleg Vaskevich",
   "scripts": {
     "dev": "next dev",
+    "docker": "docker-compose up",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

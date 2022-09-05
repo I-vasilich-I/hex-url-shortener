@@ -79,7 +79,6 @@ const LinksTable = ({ update, setUpdate }: IProps) => {
 
   // no time for types...
   const handleChange = useCallback(async (pagination: any, _filter: any, sorter: any) => {
-    console.log(sorter);
     let orderBy = ['asc_short'];
 
     if (Array.isArray(sorter)) {
@@ -115,14 +114,15 @@ const LinksTable = ({ update, setUpdate }: IProps) => {
 
   useEffect(() => {
     loadInitialData();
-  }, [loadInitialData])
+  }, [])
 
   useEffect(() => {
     if (update) {
       loadInitialData();
       setUpdate(false);
     }
-  }, [update, setUpdate, loadInitialData])
+
+  }, [update])
 
   return (
     <Spin wrapperClassName='spinner' spinning={loading}>

@@ -1,0 +1,12 @@
+services:
+  node: 
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: url-shortener
+    restart: always
+    ports: 
+      - 3000:3000
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules

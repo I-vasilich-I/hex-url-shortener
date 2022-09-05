@@ -10,7 +10,7 @@ const Home: NextPage = () => {
   const { token } = useAuthContext();
   const [linkLoading, setLinkLoading] = useState(false);
   const [link, setLink] = useState("");
-  const [update, setUpdate] = useState(false);
+  const [update, setUpdate] = useState(true);
 
   const handleShorten = async () => {
     setLinkLoading(true);
