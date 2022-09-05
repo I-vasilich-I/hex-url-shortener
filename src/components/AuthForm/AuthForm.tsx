@@ -5,6 +5,7 @@ import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { message, Spin } from 'antd';
 
 import eye from 'public/images/eye.svg';
 import eyeBlocked from 'public/images/eye-blocked.svg';
@@ -71,7 +72,7 @@ const AuthForm = () => {
   const handleSignIn = async ({ username, password }: IFormInputs) => {
     const response = await signInUser(username, password);
     if (!response || response.error) {
-      handleError(response?.error || 'Something went wrong');
+      handleError(response?.error);
       return null;
     }
     return response.data;
@@ -80,15 +81,14 @@ const AuthForm = () => {
   const handleSignUp = async ({ username, password }: IFormInputs) => {
     const response = await signUpUser(username, password);
     if (!response || response.error) {
-      handleError(response?.error || 'Something went wrong');
+      handleError(response?.error);
       return null;
     }
     return response.data;
   };
 
-  // there could be your ad... I mean error message;
   const handleError = (error: any) => {
-    alert(JSON.stringify(error));
+    message.error(error.detail ?? 'Something went wrong')
   }
 
   const onSubmit = async (user: IFormInputs) => {
@@ -136,9 +136,9 @@ const AuthForm = () => {
         </EyeButton>
         {passwordErrorMessage ? <span role="alert">{passwordErrorMessage}</span> : null}
       </PasswordLabel>
-      <Button type="submit" disabled={isLoading || isButtonDisabled}>{title}</Button> 
-      {/* it could've been a fancy loader, but we're out of budget */}
-      {isLoading ? <span>{`it could've been a fancy loader...`}</span> : null}
+      <Spin spinning={isLoading} wrapperClassName="spinner">
+        <Button type="submit" disabled={isLoading || isButtonDisabled}>{title}</Button> 
+      </Spin>
       <p>
         {text}{' '}
         <Link href={bottomLink} passHref>

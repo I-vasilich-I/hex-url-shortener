@@ -9,6 +9,7 @@ import useAuthContext from 'src/hooks/useAuthContext';
 import GlobalStyle from 'src/styles/global.style';
 import { theme } from 'src/styles/theme.style';
 import { ThemeProvider } from 'styled-components';
+import 'antd/dist/antd.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { token, setToken } = useAuthContext();
@@ -17,7 +18,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     const tokenInStorage = localStorage.getItem('hex_token');
-    console.log(tokenInStorage)
     if (tokenInStorage) {
       setToken(tokenInStorage)
       router.push(LINKS.HOME.href)

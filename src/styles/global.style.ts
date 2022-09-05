@@ -16,6 +16,10 @@ const GlobalStyle = createGlobalStyle`
     min-width: 320px;
   }
 
+  main {
+    padding: 1rem;
+  }
+
   button {
     &:hover {
       cursor: pointer;
@@ -36,6 +40,11 @@ const GlobalStyle = createGlobalStyle`
     font-family: Noto Sans;
     src: url(/fonts/NotoSans-Regular.ttf);
   }
+
+  .spinner {
+    width: 100%;
+  }
+
 `;
 
 export default GlobalStyle;
