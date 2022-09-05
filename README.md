@@ -30,3 +30,11 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+[Deploy](https://hex-url-shortener.netlify.app/)
+
+## Known issues(don't have time to fix it)
+
+ - Deploy has issue with CORS, could be fixed with some proxy server
+ - Flickering of home page before redirect on unauthorized load
+ - Some troubles with first data load after authentication - after reload everything works fine
+
